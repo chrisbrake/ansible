@@ -30,8 +30,6 @@
       append: yes
     become: true
 
-
-
   handlers:
     - name: Restart Docker
       service:
