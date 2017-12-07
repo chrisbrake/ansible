@@ -14,7 +14,7 @@ The recommended name for this is secrets.yml and it should contain the following
 * ssh_key_location - The location of the ssh public key(s) to install.
 
 ## Bootstrap
-This is intended to get a node off the ground.  
+This is intended to get a node off the ground.  Allowing you to more easily run further playbooks.
 * Installs and enables Avahi, and SSH.
 * Disables root login, and password authentication for ssh.
 * Adds your user with sudo permissions (no prompt), and your public key installed.
