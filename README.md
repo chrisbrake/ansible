@@ -20,7 +20,7 @@ For instructions on how to make one of these see [Ansible's documentation](https
 
 Recommended to run as: 
 
-    ``ansible-playbook --ask-pass --ask-sudo-pass --ask-vault-pass -i '1.1.1.1,' bootstrap.yml``
+    ansible-playbook --ask-pass --ask-sudo-pass --ask-vault-pass -i '1.1.1.1,' bootstrap.yml
 
 
 ## Docker
