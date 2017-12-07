@@ -1,24 +1,48 @@
---
-tasks:
-  - name: Install the latest version of sshd
+---
+
+- hosts: all
+  tasks:
+  - include_vars: secrets.yml
+
+  - name: Install Ansible dependancies
     package:
-      name: sshd
+      name: "{{ item }}"
       state: latest
+    with_items:
+      - libselinux-python
+    become: true
+
+  - name: Install the latest version of openssh
+    package:
+      name: openssh
+      state: latest
+    become: true
 
   - name: Enable sshd
     service:
       name: sshd
       enabled: yes
       state: started
+    become: true
 
   - name: Create user
     user:
-      name: "{{ ansible_user }}"
+      name: "{{ ansible_ssh_user }}"
       groups: wheel
+    become: true
+
+  - name: Allow 'wheel' group to have passwordless sudo
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^%wheel'
+      line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
+    become: true
 
   - name: Set authorized key
     authorized_key:
-      user: "{{ ansible_user }}"
+      user: "{{ ansible_ssh_user }}"
       state: present
       key: "{{ ssh_key_location }}"
 
@@ -27,6 +51,7 @@ tasks:
                 regexp="^PasswordAuthentication"
                 line="PasswordAuthentication no"
                 state=present
+    become: true
     notify: Restart sshd
 
   - name: Disallow root ssh access
@@ -34,21 +59,25 @@ tasks:
                 regexp="^PermitRootLogin"
                 line="PermitRootLogin no"
                 state=present
+    become: true
     notify: Restart sshd
 
   - name: Install the latest version of Avahi
     package:
       name: avahi
       state: latest
+    become: true
 
   - name: Enable and Start Avahi
     service:
-      name: avahi
+      name: avahi-daemon
       enabled: yes
       state: started
+    become: true
 
-handlers:
-  - name: Restart sshd
-    service:
-      name: sshd
-      state: restarted
+  handlers:
+    - name: Restart sshd
+      service:
+        name: sshd
+        state: restarted
+      become: true
