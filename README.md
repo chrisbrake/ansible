@@ -10,8 +10,8 @@ These will be set up for Linux systems.  Intending to stay as distro agnostic as
 In order to use these files effectively you will need to make a Ansible vault to store information.  
 For instructions on how to make one of these see [Ansible's documentation](https://docs.ansible.com/ansible/2.4/vault.html#creating-encrypted-files).
 The recommended name for this is secrets.yml and it should contain the following variables.
-* ansible_ssh_user
-* ssh_key_location
+* ansible_ssh_user - The user to log into the remote systems as.
+* ssh_key_location - The location of the ssh public key(s) to install.
 
 ## Bootstrap
 This is intended to get a node off the ground.  
