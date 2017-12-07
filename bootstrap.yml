@@ -29,6 +29,7 @@
     user:
       name: "{{ ansible_ssh_user }}"
       groups: wheel
+      append: yes
     become: true
 
   - name: Allow 'wheel' group to have passwordless sudo
