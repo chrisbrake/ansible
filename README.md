@@ -17,4 +17,6 @@ This is intended to get a node off the ground.  Allowing you to more easily run 
 * Installs and enables Avahi, and SSH.
 * Disables root login, and password authentication for ssh.
 * Adds your user with sudo permissions (no prompt), and your public key installed.
-Recommended to run as: ansible-playbook --ask-pass --ask-sudo-pass --ask-vault-pass -i '1.1.1.1,' bootstrap.yml
+Recommended to run as: 
+
+    ``ansible-playbook --ask-pass --ask-sudo-pass --ask-vault-pass -i '1.1.1.1,' bootstrap.yml``
