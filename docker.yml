@@ -1,0 +1,40 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Install the latest version of Docker
+    package:
+      name: docker
+      state: latest
+    become: true
+
+  - name: Enable Docker service
+    service:
+      name: docker
+      enabled: yes
+      state: started
+    become: true
+
+  - name: Create docker group
+    group:
+      name: somegroup
+      state: present
+    become: true
+    notify: Restart Docker
+
+  - name: Add {{ ansible_user_id }} to docker group.
+    user:
+      name: "{{ ansible_user_id }}"
+      groups: docker
+      append: yes
+    become: true
+
+
+
+  handlers:
+    - name: Restart Docker
+      service:
+        name: docker
+        state: restarted
+      become: true
