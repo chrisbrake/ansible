@@ -33,13 +33,13 @@
       append: yes
     become: true
 
-  - name: Allow 'wheel' group to have passwordless sudo
+  - name: Allow "wheel" group to have passwordless sudo
     lineinfile:
       dest: /etc/sudoers
       state: present
-      regexp: '^%wheel'
-      line: '%wheel ALL=(ALL) NOPASSWD: ALL'
-      validate: 'visudo -cf %s'
+      regexp: "^%wheel"
+      line: "%wheel ALL=(ALL) NOPASSWD: ALL"
+      validate: "visudo -cf %s"
     become: true
 
   - name: Set authorized key
