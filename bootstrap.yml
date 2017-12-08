@@ -26,7 +26,7 @@
       state: started
     become: true
 
-  - name: Create user
+  - name: Create user {{ ansible_ssh_user }}
     user:
       name: "{{ ansible_ssh_user }}"
       groups: wheel
