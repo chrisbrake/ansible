@@ -18,7 +18,7 @@
 
   - name: Create docker group
     group:
-      name: somegroup
+      name: docker
       state: present
     become: true
     notify: Restart Docker
