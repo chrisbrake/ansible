@@ -74,12 +74,15 @@
     become: true
     notify: Restart Avahi
 
-  - name: Open firewall port for mDNS
+  - name: Open firewall ports for mDNS and ssh
     firewalld:
-      service: mdns
+      service: "{{ item }}"
       permanent: true
       immediate: true
       state: enabled
+    with_items:
+      - ssh
+      - mdns
     become: true
 
   - name: Enable and Start Avahi
