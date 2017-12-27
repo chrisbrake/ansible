@@ -5,6 +5,7 @@ These will be set up for Linux systems.  Intending to stay as distro agnostic as
 # Table of Contents
 1. [Bootstrap](#bootstrap)
 2. [Docker](#docker)
+2. [Codecs](#codecs)
 
 
 ## Bootstrap
@@ -27,3 +28,9 @@ Recommended to run as:
 This is intended to get Docker installed and running.  With the active user able to administer the system without needing to elevate privileges.
 * Installs and enables Docker.
 * Creates a docker group, and adds that groups access to the ansible user.
+
+
+## Codecs
+This is intended to install additional video/audio codecs.  Because this requires adding additional repos, it currently only supports Fedora.
+* Enables additional repos.
+* Installs codec software.
