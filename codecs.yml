@@ -33,4 +33,5 @@
       - gstreamer1-plugins-ugly
       - gstreamer1-plugin-openh264
       - mozilla-openh264
+      - chromium-libs-media-freeworld
     become: true
