@@ -19,9 +19,9 @@ For instructions on how to make one of these see [Ansible's documentation](https
 * ansible_ssh_user - The user to log into the remote systems as, for ease of use this should be the same name as the user you will run the playbooks as.
 * ssh_key_location - The location of the ssh public key(s) to install.
 
-Recommended to run as: 
+Recommended to run locally, so it can set up your Ansible user.  Call it as: 
 
-    ansible-playbook --ask-pass --ask-sudo-pass --ask-vault-pass -i '1.1.1.1,' bootstrap.yml
+    ansible-playbook --ask-vault-pass --connection=local -i 'localhost,' bootstrap.yml
 
 
 ## Docker
