@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Update OS
+    dnf:
+    name: '*'
+    state: latest
