@@ -34,3 +34,10 @@ This is intended to get Docker installed and running.  With the active user able
 This is intended to install additional video/audio codecs.  Because this requires adding additional repos, it currently only supports Fedora.
 * Enables additional repos.
 * Installs codec software.
+
+## mDNS
+This is intended to set up mDNS on the target system so it find and be found using it's hostname.
+Because of some specifics around the firewall setup in ansible you'll need to do this explicitly in python 3.
+     
+     ansible-playbook --connection=local -i 'localhost,' mdns.yml  --ask-become-pass -e "ansible_python_interpreter=/usr/bin/python3"
+     

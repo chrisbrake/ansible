@@ -10,7 +10,6 @@
       state: latest
     with_items:
       - libselinux-python
-      - python-firewall
     become: true
 
   - name: Install the latest version of openssh
@@ -64,43 +63,9 @@
     become: true
     notify: Restart sshd
 
-  - name: Install mDNS software
-    package:
-      name: "{{ item }}"
-      state: latest
-    with_items:
-      - avahi
-      - nss-mdns
-    become: true
-    notify: Restart Avahi
-
-  - name: Open firewall ports for mDNS and ssh
-    firewalld:
-      service: "{{ item }}"
-      permanent: true
-      immediate: true
-      state: enabled
-    with_items:
-      - ssh
-      - mdns
-    become: true
-
-  - name: Enable and Start Avahi
-    service:
-      name: avahi-daemon
-      enabled: yes
-      state: started
-    become: true
-
   handlers:
     - name: Restart sshd
       service:
         name: sshd
-        state: restarted
-      become: true
-
-    - name: Restart Avahi
-      service:
-        name: avahi-daemon
         state: restarted
       become: true
