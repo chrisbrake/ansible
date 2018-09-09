@@ -3,7 +3,7 @@
 - hosts: all
   tasks:
 
-  - name: Disable lid switch actions
+  - name: Ignore lid switch
     lineinfile:
       dest: /etc/systemd/logind.conf
       state: present
