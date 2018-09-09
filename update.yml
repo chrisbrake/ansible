@@ -5,5 +5,5 @@
 
   - name: Update OS
     dnf:
-    name: '*'
-    state: latest
+      name: '*'
+      state: latest
