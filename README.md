@@ -50,3 +50,8 @@ Configures ssh to accept the key from your home directory, turns off root log in
 Configures the current user to not be prompted for sudo commands
 
     ansible-playbook -i '192.168.0.0,' sudo.yml  --ask-become-pass
+    
+## laptop-server
+Configures the power management settings on a laptop to make it more usable as a home server.
+
+    ansible-playbook -i '192.168.0.0,' power.yml

@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Disable lid switch actions
+    lineinfile:
+      dest: /etc/systemd/logind.conf
+      state: present
+      regexp: "^HandleLidSwitch"
+      line: "HandleLidSwitch=ignore"
+    become: true
+    notify: restart logind
+
+  handlers:
+    - name: restart logind
+      service:
+        name: systemd-logind
+        state: restarted
+      become: true
