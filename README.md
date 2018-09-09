@@ -41,3 +41,7 @@ Because of some specifics around the firewall setup in ansible you'll need to do
      
      ansible-playbook --connection=local -i 'localhost,' mdns.yml  --ask-become-pass -e "ansible_python_interpreter=/usr/bin/python3"
      
+## ssh
+Configures ssh to accept the key from your home directory, turns off root log in and root login.
+
+    ansible-playbook -i '192.168.0.0,' ssh.yml  --ask-become-pass  --ask-pas

@@ -1,0 +1,39 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Install Ansible dependancies
+    package:
+      name: libselinux-python
+      state: latest
+    become: true
+
+  - name: Set authorized key
+    authorized_key:
+      user: "{{ ansible_user_id }}"
+      state: present
+      key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+  - name: Disallow password authentication for ssh
+    lineinfile: dest=/etc/ssh/sshd_config
+      regexp="^PasswordAuthentication"
+      line="PasswordAuthentication no"
+      state=present
+    become: true
+    notify: Restart sshd
+
+  - name: Disallow root ssh access
+    lineinfile: dest=/etc/ssh/sshd_config
+      regexp="^PermitRootLogin"
+      line="PermitRootLogin no"
+      state=present
+    become: true
+    notify: Restart sshd
+
+  handlers:
+  - name: Restart sshd
+    service:
+      name: sshd
+      state: restarted
+    become: true
