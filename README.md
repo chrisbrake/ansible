@@ -44,4 +44,9 @@ Because of some specifics around the firewall setup in ansible you'll need to do
 ## ssh
 Configures ssh to accept the key from your home directory, turns off root log in and root login.
 
-    ansible-playbook -i '192.168.0.0,' ssh.yml  --ask-become-pass  --ask-pas
+    ansible-playbook -i '192.168.0.0,' ssh.yml  --ask-become-pass  --ask-pass
+    
+## sudo
+Configures the current user to not be prompted for sudo commands
+
+    ansible-playbook -i '192.168.0.0,' sudo.yml  --ask-become-pass
