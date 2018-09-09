@@ -7,3 +7,10 @@
     dnf:
       name: '*'
       state: latest
+    become: true
+    notify: Reboot
+
+  handlers:
+    - name: Reboot
+      shell: sleep 2 && /sbin/shutdown -r now "System packages upgraded"
+      become: true
