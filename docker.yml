@@ -9,6 +9,12 @@
       state: latest
     become: true
 
+  - name: Install the latest version of docker-compose
+    package:
+      name: docker-compose
+      state: latest
+    become: true
+
   - name: Enable Docker service
     service:
       name: docker
