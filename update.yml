@@ -13,4 +13,14 @@
   handlers:
     - name: Reboot
       shell: sleep 2 && /sbin/shutdown -r now "System packages upgraded"
+      async: 1
+      poll: 0
       become: true
+      notify: Wait for Reboot
+
+    - name: Wait for Reboot
+      wait_for_connection:
+        connect_timeout: 20
+        sleep: 5
+        delay: 5
+        timeout: 300
