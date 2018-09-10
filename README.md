@@ -1,7 +1,7 @@
-# ansible
+# Ansible
 An area where I store my Ansible playbooks.
 
-# Table of Contents
+## Table of Contents
 1. [Docker](#docker)
 1. [Codecs](#codecs)
 1. [mDNS](#mdns)
