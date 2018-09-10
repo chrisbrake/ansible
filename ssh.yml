@@ -16,7 +16,8 @@
       key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
   - name: Disallow password authentication for ssh
-    lineinfile: dest=/etc/ssh/sshd_config
+    lineinfile:
+      dest: /etc/ssh/sshd_config
       regexp: "^PasswordAuthentication"
       line: "PasswordAuthentication no"
       state: present
@@ -24,7 +25,8 @@
     notify: Restart sshd
 
   - name: Disallow root ssh access
-    lineinfile: dest=/etc/ssh/sshd_config
+    lineinfile:
+      dest: /etc/ssh/sshd_config
       regexp: "^PermitRootLogin"
       line: "PermitRootLogin no"
       state: present
