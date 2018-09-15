@@ -2,24 +2,13 @@
 An area where I store my Ansible playbooks.
 
 ## Table of Contents
-1. [Docker](#docker)
-1. [Codecs](#codecs)
 1. [mDNS](#mdns)
 1. [ssh](#ssh)
 1. [sudo](#sudo)
 1. [laptop-server](#laptop-server)
+1. [Docker](#docker)
+1. [Codecs](#codecs)
 
-
-## Docker
-This is intended to get Docker installed and running.  With the active user able to administer the system without needing to elevate privileges.
-* Installs and enables Docker.
-* Creates a docker group, and adds that groups access to the ansible user.
-
-
-## Codecs
-This is intended to install additional video/audio codecs.  Because this requires adding additional repos, it currently only supports Fedora.
-* Enables additional repos.
-* Installs codec software.
 
 ## mDNS
 This is intended to set up mDNS on the target system so it find and be found using it's hostname.
@@ -41,3 +30,14 @@ Configures the current user to not be prompted for sudo commands
 Configures the power management settings on a laptop to make it more usable as a home server.
 
     ansible-playbook -i '192.168.0.0,' laptop-server.yml
+
+## Docker
+This is intended to get Docker installed and running.  With the active user able to administer the system without needing to elevate privileges.
+* Installs and enables Docker.
+* Creates a docker group, and adds that groups access to the ansible user.
+
+
+## Codecs
+This is intended to install additional video/audio codecs.  Because this requires adding additional repos, it currently only supports Fedora.
+* Enables additional repos.
+* Installs codec software.
