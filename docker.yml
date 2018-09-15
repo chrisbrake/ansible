@@ -3,15 +3,9 @@
 - hosts: all
   tasks:
 
-  - name: Install the latest version of Docker
+  - name: Install Docker
     package:
       name: docker
-      state: latest
-    become: true
-
-  - name: Install the latest version of docker-compose
-    package:
-      name: docker-compose
       state: latest
     become: true
 
@@ -35,6 +29,14 @@
       groups: docker
       append: yes
     become: true
+
+  - name: Install Docker tools
+    pip:
+      name: "{{ item }}"
+    with_items:
+      - docker
+      - docker-compose
+    become: True
 
   handlers:
     - name: Restart Docker
