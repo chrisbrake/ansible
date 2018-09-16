@@ -10,6 +10,12 @@ An area where I store my Ansible playbooks.
 1. [Codecs](#codecs)
 
 
+## Local setup
+Set up the system we will be running the playbooks from.  
+Once it is complete you can add your hosts into the file at ~/.ansible_hosts
+
+    ansible-playbook local-setup.yml --ask-become
+
 ## mDNS
 This is intended to set up mDNS on the target system so it find and be found using it's hostname.
 Because of some specifics around the firewall setup in ansible you'll need to do this explicitly in python 3.
@@ -26,7 +32,7 @@ Configures the current user to not be prompted for sudo commands
 
     ansible-playbook -i '192.168.0.0,' sudo.yml  --ask-become-pass
     
-## laptop-server
+## Laptop Server
 Configures the power management settings on a laptop to make it more usable as a home server.
 
     ansible-playbook -i '192.168.0.0,' laptop-server.yml
