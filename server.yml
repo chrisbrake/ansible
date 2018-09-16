@@ -1,0 +1,5 @@
+---
+
+- import_playbook: sudo.yml
+- import_playbook: ssh.yml
+- import_playbook: docker.yml

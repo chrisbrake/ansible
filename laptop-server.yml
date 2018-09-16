@@ -18,3 +18,5 @@
         name: systemd-logind
         state: restarted
       become: true
+
+- import_playbook: server.yml
