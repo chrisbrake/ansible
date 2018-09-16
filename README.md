@@ -2,6 +2,7 @@
 An area where I store my Ansible playbooks.
 
 ## Table of Contents
+1. [Local setup](#localsetup)
 1. [mDNS](#mdns)
 1. [ssh](#ssh)
 1. [sudo](#sudo)
