@@ -19,4 +19,4 @@
         state: restarted
       become: true
 
-- import_playbook: server.yml
+- include: server.yml
