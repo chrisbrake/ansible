@@ -1,0 +1,21 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Install qmk build dependancies
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - avr-libc
+      - avrdude
+      - dfu-programmer
+      - dfu-util
+      - gcc
+      - git
+      - unzip
+      - wget
+      - zip
+    become: true
