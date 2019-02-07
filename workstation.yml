@@ -1,0 +1,8 @@
+---
+
+- include: codecs.yml
+- include: docker.yml
+- include: local-setup.yml
+- include: mdns.yml
+- include: qmk-build.yml
+- include: sudo.yml
