@@ -1,5 +1,5 @@
 ---
 
-- include: sudo.yml
-- include: ssh.yml
-- include: docker.yml
+- import_playbook: sudo.yml
+- import_playbook: ssh.yml
+- import_playbook: docker.yml

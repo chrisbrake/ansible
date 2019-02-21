@@ -1,8 +1,8 @@
 ---
 
-- include: codecs.yml
-- include: docker.yml
-- include: local-setup.yml
-- include: mdns.yml
-- include: qmk-build.yml
-- include: sudo.yml
+- import_playbook: codecs.yml
+- import_playbook: docker.yml
+- import_playbook: local-setup.yml
+- import_playbook: mdns.yml
+- import_playbook: qmk-build.yml
+- import_playbook: sudo.yml
