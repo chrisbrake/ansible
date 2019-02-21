@@ -22,6 +22,12 @@
       enabled: yes
     become: true
 
+  - name: Add rpmfusion-free repository
+    package:
+      name: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-29.noarch.rpm
+      state: present
+    become: true
+
   - name: Install h.264 dependancies
     package:
       name: "{{ item }}"
@@ -32,4 +38,5 @@
       - gstreamer1-plugins-good-extras
       - gstreamer1-plugin-openh264
       - mozilla-openh264
+      - ffmpeg-libs
     become: true
