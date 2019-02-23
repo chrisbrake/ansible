@@ -1,13 +1,8 @@
 ---
 
-- hosts: all
+- hosts: 127.0.0.1
+  connection: local
   tasks:
-
-  - name: Install Ansible dependancies
-    package:
-      name: libselinux-python
-      state: latest
-    become: true
 
   - name: Turn off host key checking
     ini_file:
