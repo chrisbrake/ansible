@@ -26,6 +26,8 @@
 
   - name: Initalise inventory file
     copy:
-      content: ""
+      content: |
+               [self]
+               localhost              ansible_connection=local
       dest: ~/.ansible_hosts
       force: no
