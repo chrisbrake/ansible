@@ -3,12 +3,6 @@
 - hosts: all
   tasks:
 
-  - name: RPM Fusion for Fedora 29 - Nonfree
-    package:
-      name: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-29.noarch.rpm
-      state: present
-    become: true
-
   - name: Install Dropbox
     package:
       name: nautilus-dropbox
