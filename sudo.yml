@@ -4,6 +4,14 @@
   connection: local
   tasks:
 
+  - name: Install Ansible dependancies
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - libselinux-python
+    become: true
+
   - name: Allow "wheel" group to have passwordless sudo
     lineinfile:
       dest: /etc/sudoers
