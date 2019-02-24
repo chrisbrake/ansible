@@ -5,10 +5,8 @@
 
   - name: Install Ansible dependancies
     package:
-      name: "{{ item }}"
+      name: python3-firewall
       state: latest
-    with_items:
-      - python3-firewall
     become: true
 
   - name: Install mDNS software
