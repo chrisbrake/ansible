@@ -3,12 +3,6 @@
 - hosts: all
   tasks:
 
-  - name: Install Ansible dependancies
-    package:
-      name: libselinux-python
-      state: latest
-    become: true
-
   - name: Set authorized key
     authorized_key:
       user: "{{ ansible_user_id }}"
