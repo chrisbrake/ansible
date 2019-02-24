@@ -24,7 +24,7 @@
                [self]
                localhost              ansible_connection=local
 
-               [all:vars]
+               [self:vars]
                ansible_python_interpreter=/usr/bin/python3
       dest: ~/.ansible_hosts
       force: no
