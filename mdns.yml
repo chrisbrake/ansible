@@ -17,6 +17,7 @@
       state: latest
     with_items:
       - avahi
+      - avahi-tools
       - nss-mdns
     become: true
     notify: Restart Avahi
