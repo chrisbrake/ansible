@@ -6,3 +6,15 @@
 - import_playbook: mdns.yml
 - import_playbook: qmk-build.yml
 - import_playbook: sudo.yml
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Install Workstation software
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - tilix
+    become: true
