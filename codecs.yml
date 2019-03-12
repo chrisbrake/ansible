@@ -1,32 +1,7 @@
 ---
 
-- hosts: 127.0.0.1
-  connection: local
+- hosts: all
   tasks:
-
-  - name: Add EPEL repository
-    yum_repository:
-      name: epel
-      description: EPEL YUM repo
-      baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-    become: true
-
-  - name: Add openh264 repository
-    yum_repository:
-      name: fedora-cisco-openh264
-      description: Fedora $releasever openh264 (From Cisco) - $basearch
-      baseurl: https://codecs.fedoraproject.org/openh264/$releasever/$basearch/
-      gpgcheck : yes
-      gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
-
-      enabled: yes
-    become: true
-
-  - name: Add rpmfusion-free repository
-    package:
-      name: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-29.noarch.rpm
-      state: present
-    become: true
 
   - name: Install h.264 dependancies
     package:

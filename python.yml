@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Set up python environment
+    pip:
+        name:
+          - requests
+        state: latest
+        virtualenv: ~/.venv

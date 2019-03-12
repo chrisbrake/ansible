@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Install Dropbox
+    package:
+      name: nautilus-dropbox
+      state: latest
+    become: true

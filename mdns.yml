@@ -1,15 +1,12 @@
 ---
 
-- hosts: 127.0.0.1
-  connection: local
+- hosts: all
   tasks:
 
   - name: Install Ansible dependancies
     package:
-      name: "{{ item }}"
+      name: python3-firewall
       state: latest
-    with_items:
-      - python3-firewall
     become: true
 
   - name: Install mDNS software
@@ -18,6 +15,7 @@
       state: latest
     with_items:
       - avahi
+      - avahi-tools
       - nss-mdns
     become: true
     notify: Restart Avahi

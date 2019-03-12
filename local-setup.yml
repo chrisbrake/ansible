@@ -4,12 +4,6 @@
   connection: local
   tasks:
 
-  - name: Install Ansible dependancies
-    package:
-      name: libselinux-python
-      state: latest
-    become: true
-
   - name: Turn off host key checking
     ini_file:
       path: ~/.ansible.cfg
@@ -26,6 +20,11 @@
 
   - name: Initalise inventory file
     copy:
-      content: ""
+      content: |
+               [self]
+               localhost              ansible_connection=local
+
+               [self:vars]
+               ansible_python_interpreter=/usr/bin/python3
       dest: ~/.ansible_hosts
       force: no
