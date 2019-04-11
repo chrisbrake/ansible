@@ -1,0 +1,21 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Install mariadb
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - mariadb
+      - mariadb-server
+    become: true
+
+  - name: Enable mariadb service
+    service:
+      name: mariadb
+      enabled: yes
+      state: started
+    become: true
