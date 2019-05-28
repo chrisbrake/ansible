@@ -1,0 +1,39 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Install build dependencies
+    package:
+      name: '{{ item }}'
+      state: latest
+    with_items:
+      - make
+      - cmake
+      - gcc-c++
+      - libX11-devel
+    become: true
+
+  - name: Get blender source
+    git:
+      repo: 'git://git.blender.org/blender.git'
+      dest: '{{ ansible_env.HOME }}/blender'
+
+  - name: Run the build
+    make:
+      target: '{{ item }}'
+      chdir: '{{ ansible_env.HOME }}/blender'
+    with_items:
+      - update
+      - lite
+
+  - name: Install blender
+    make:
+      target: install
+      chdir: '{{ ansible_env.HOME }}/blender'
+      params:
+        CMAKE_INSTALL_PREFIX: /opt/blender
+        WITH_INSTALL_PORTABLE: OFF
+        WITH_BUILDINFO: OFF
+        WITH_GAMEENGINE: OFF
