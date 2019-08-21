@@ -1,0 +1,34 @@
+---
+
+- import_playbook: docker.yml
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Ensure jenkins directory on docker host
+    file:
+      state: directory
+      owner: 1000
+      group: 1000
+      path: /share/jenkins
+
+  - name: Pull the latest official jenkins docker image
+    docker_image:
+      name: "jenkins:latest"
+
+  - name: Create a volume for jenkins data
+    docker_volume:
+      name: jenkins_home
+
+  - name: Create a container from the jenkins docker image
+    docker_container:
+      name: "jenkins-server"
+      image: "jenkins"
+      ports:
+          - "8080:8080"
+          - "50000:50000"
+      volumes:
+          - "jenkins_home:/var/jenkins_home"
+      state: present
+      recreate: yes
