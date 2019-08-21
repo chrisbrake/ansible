@@ -8,7 +8,8 @@
 
   - name: Pull the latest official jenkins docker image
     docker_image:
-      name: "jenkins:latest"
+      name: "jenkins/jenkins:lts"
+      source: pull
 
   - name: Create a volume for jenkins data
     docker_volume:
@@ -17,7 +18,7 @@
   - name: Create a container from the jenkins docker image
     docker_container:
       name: "jenkins-server"
-      image: "jenkins"
+      image: "jenkins/jenkins:lts"
       ports:
           - "8080:8080"
           - "50000:50000"
