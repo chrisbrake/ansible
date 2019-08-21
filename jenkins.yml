@@ -6,13 +6,6 @@
   connection: local
   tasks:
 
-  - name: Ensure jenkins directory on docker host
-    file:
-      state: directory
-      owner: 1000
-      group: 1000
-      path: /share/jenkins
-
   - name: Pull the latest official jenkins docker image
     docker_image:
       name: "jenkins:latest"
