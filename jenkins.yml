@@ -30,5 +30,6 @@
           - "50000:50000"
       volumes:
           - "jenkins_home:/var/jenkins_home"
-      state: present
+      state: started
+      restart_policy: unless-stopped
       recreate: yes
