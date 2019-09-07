@@ -1,0 +1,28 @@
+---
+
+- import_playbook: docker.yml
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Pull the latest official artifactory docker image
+    docker_image:
+      name: "docker.bintray.io/jfrog/artifactory-oss:latest"
+      source: pull
+
+  - name: Create a volume for artifactory data
+    docker_volume:
+      name: artifactory_home
+
+  - name: Create a container from the artifactory docker image
+    docker_container:
+      name: "artifactory-server"
+      image: "docker.bintray.io/jfrog/artifactory-oss:latest"
+      ports:
+          - "8081:8081"
+      volumes:
+          - "artifactory_home:/var/opt/jfrog/artifactory"
+      state: started
+      restart_policy: unless-stopped
+      recreate: yes
