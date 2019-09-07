@@ -3,14 +3,6 @@
 - hosts: all
   tasks:
 
-
-  - name: Add EPEL repository
-    yum_repository:
-      name: epel
-      description: EPEL YUM repo
-      baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-    become: true
-
   - name: Add openh264 repository
     yum_repository:
       name: fedora-cisco-openh264
@@ -20,16 +12,4 @@
       gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 
       enabled: yes
-    become: true
-
-  - name: RPM Fusion for Fedora 29 - Free
-    package:
-      name: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-29.noarch.rpm
-      state: present
-    become: true
-
-  - name: RPM Fusion for Fedora 29 - Nonfree
-    package:
-      name: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-29.noarch.rpm
-      state: present
     become: true
