@@ -1,12 +1,5 @@
 ---
 
-- import_playbook: codecs.yml
-- import_playbook: docker.yml
-- import_playbook: local-setup.yml
-- import_playbook: mdns.yml
-- import_playbook: qmk-build.yml
-- import_playbook: sudo.yml
-
 - hosts: 127.0.0.1
   connection: local
   tasks:
