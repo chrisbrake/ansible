@@ -4,13 +4,25 @@
   connection: local
   tasks:
 
-  - name: Clean Maven Local
+  - name: Checking Maven Local Repository
     find:
       paths: ~/.m2/
       age: 10d
     register: files_to_delete
 
-  - name: Ansible remove files older than a date example
+  - name: Cleaning Maven local repository
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    with_items: "{{ files_to_delete.files }}"
+
+  - name: Checking Gradle build cache
+    find:
+      paths: ~/.gradle/caches/
+      age: 10d
+    register: files_to_delete
+
+  - name: Cleaning Gradle build cache
     file:
       path: "{{ item.path }}"
       state: absent
